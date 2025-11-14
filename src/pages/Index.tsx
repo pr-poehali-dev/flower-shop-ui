@@ -308,7 +308,7 @@ export default function Index() {
 
       <footer className="bg-secondary/50 py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">© 2024 FleurBoutique. Все права защищены.</p>
+          <p className="text-muted-foreground"></p>
           <div className="flex justify-center gap-4 mt-4">
             <Icon name="Instagram" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
             <Icon name="Facebook" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
