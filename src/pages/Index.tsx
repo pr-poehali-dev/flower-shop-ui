@@ -222,7 +222,7 @@ export default function Index() {
             <div className="mt-12 space-y-4">
               <h4 className="font-semibold text-xl">Стоимость доставки:</h4>
               <p>• По Севастополю 300р</p>
-              <p>• В пределах МКАД — 350₽ при заказе до 3000₽</p>
+              <p>• В Балаклаву 400р</p>
               <p>• За МКАД — 500₽ + 30₽/км</p>
             </div>
           </div>
