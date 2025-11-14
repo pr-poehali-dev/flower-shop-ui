@@ -274,7 +274,7 @@ export default function Index() {
               
               <Card className="p-6">
                 <h4 className="font-semibold text-xl mb-4 flex items-center gap-2">Telegram</h4>
-                <p className="text-lg mb-2">info@fleurboutique.ru</p>
+                <p className="text-lg mb-2">@Yert88</p>
                 <p className="text-muted-foreground">Ответим в течение 1 часа</p>
               </Card>
               
