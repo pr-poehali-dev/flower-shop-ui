@@ -30,12 +30,10 @@ interface CustomBouquetItem {
 
 const bouquets: Bouquet[] = [
   { id: 1, name: 'Красные розы классика', price: 3500, occasion: 'Красные розы', image: 'https://cdn.poehali.dev/files/d78db5e2-0d0d-445b-90a5-bdd46e2325cc.jpg', description: '15 красных роз' },
-  { id: 2, name: 'Красная страсть', price: 5000, occasion: 'Красные розы', image: 'https://cdn.poehali.dev/files/d78db5e2-0d0d-445b-90a5-bdd46e2325cc.jpg', description: '25 красных роз' },
   { id: 3, name: 'Белоснежные розы', price: 3200, occasion: 'Романтика', image: 'https://cdn.poehali.dev/files/5d081602-a133-489b-99e1-0023037ac513.jpg', description: '15 белых роз' },
   { id: 4, name: 'Желтое солнце', price: 3000, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/ccca74b5-f2d1-4461-801c-633424e7d290.jpg', description: '15 желтых роз' },
   { id: 5, name: 'Персиковый закат', price: 3800, occasion: 'Романтика', image: 'https://cdn.poehali.dev/files/746bf317-326b-418d-808e-5fbac791183f.jpg', description: '15 оранжевых роз' },
   { id: 6, name: 'Малиновая нежность', price: 4200, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/b1ff2bef-2e39-4910-8e64-a8f34ae24158.jpg', description: '15 малиновых роз' },
-  { id: 7, name: 'Королевский микс', price: 6500, occasion: 'Свадьба', image: 'https://cdn.poehali.dev/files/d78db5e2-0d0d-445b-90a5-bdd46e2325cc.jpg', description: 'Премиум композиция' },
 ];
 
 const flowers: Flower[] = [
