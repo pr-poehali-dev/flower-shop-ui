@@ -34,6 +34,11 @@ const bouquets: Bouquet[] = [
   { id: 4, name: 'Желтое солнце', price: 1500, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/ccca74b5-f2d1-4461-801c-633424e7d290.jpg', description: '15 желтых роз по 100₽' },
   { id: 5, name: 'Персиковый закат', price: 1500, occasion: 'Романтика', image: 'https://cdn.poehali.dev/files/746bf317-326b-418d-808e-5fbac791183f.jpg', description: '15 оранжевых роз по 100₽' },
   { id: 6, name: 'Малиновая нежность', price: 1500, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/b1ff2bef-2e39-4910-8e64-a8f34ae24158.jpg', description: '15 малиновых роз по 100₽' },
+  { id: 7, name: 'Сиреневые хризантемы', price: 1400, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/350de024-a4ae-4d19-8635-40c37b2d6c92.jpg', description: '7 кустовых хризантем по 200₽' },
+  { id: 8, name: 'Фиолетовые хризантемы', price: 1400, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/eba1351a-a4c4-48af-ab4a-85fbb4a28f66.jpg', description: '7 кустовых хризантем по 200₽' },
+  { id: 9, name: 'Зеленые хризантемы', price: 1400, occasion: 'День рождения', image: 'https://cdn.poehali.dev/files/b9974384-c23c-4cf0-b8ea-d4e65b6dc5ba.jpg', description: '7 кустовых хризантем по 200₽' },
+  { id: 10, name: 'Белые хризантемы', price: 1400, occasion: 'Романтика', image: 'https://cdn.poehali.dev/files/3c2c1629-bcc4-4e2e-ae80-26697b16664c.jpg', description: '7 кустовых хризантем по 200₽' },
+  { id: 11, name: 'Мятные хризантемы', price: 1400, occasion: 'Романтика', image: 'https://cdn.poehali.dev/files/ecb2dda6-48b3-4519-8883-2d95937194a1.jpg', description: '7 кустовых хризантем по 200₽' },
 ];
 
 const flowers: Flower[] = [
