@@ -287,7 +287,7 @@ export default function Index() {
                   Адрес
                 </h4>
                 <p className="text-lg mb-2">г. Севастополь, ул. проспект Октябрьской Революции, 43Д</p>
-                <p className="text-muted-foreground">м. Тверская, 5 минут пешком</p>
+                <p className="text-muted-foreground"></p>
               </Card>
               
               <Card className="p-6">
