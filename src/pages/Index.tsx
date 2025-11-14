@@ -286,7 +286,7 @@ export default function Index() {
                   <Icon name="MapPin" size={24} />
                   Адрес
                 </h4>
-                <p className="text-lg mb-2">г. Москва, ул. Цветочная, д. 15</p>
+                <p className="text-lg mb-2">г. Севастополь, ул. проспект Октябрьской Революции, 43Д</p>
                 <p className="text-muted-foreground">м. Тверская, 5 минут пешком</p>
               </Card>
               
