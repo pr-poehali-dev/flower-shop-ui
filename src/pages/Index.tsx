@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 
 interface Bouquet {
@@ -140,51 +139,12 @@ export default function Index() {
               <button onClick={() => setActiveSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
             </nav>
 
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="relative">
-                  <Icon name="ShoppingBag" size={20} />
-                  {cart.length > 0 && (
-                    <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
-                      {cart.length}
-                    </Badge>
-                  )}
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>Корзина</SheetTitle>
-                </SheetHeader>
-                <div className="mt-8 space-y-4">
-                  {cart.length === 0 ? (
-                    <p className="text-muted-foreground text-center py-8">Корзина пуста</p>
-                  ) : (
-                    <>
-                      {cart.map((item, index) => (
-                        <div key={index} className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50">
-                          <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
-                          <div className="flex-1">
-                            <h4 className="font-medium text-sm">{item.name}</h4>
-                            <p className="text-primary font-semibold">{item.price}₽</p>
-                          </div>
-                          <Button variant="ghost" size="icon" onClick={() => removeFromCart(index)}>
-                            <Icon name="Trash2" size={16} />
-                          </Button>
-                        </div>
-                      ))}
-                      <Separator />
-                      <div className="flex justify-between items-center text-lg font-semibold">
-                        <span>Итого:</span>
-                        <span className="text-primary">{totalPrice}₽</span>
-                      </div>
-                      <Button className="w-full" size="lg">
-                        Оформить заказ
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </SheetContent>
-            </Sheet>
+            <Button asChild size="lg" className="gap-2">
+              <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
+                <Icon name="Send" size={20} />
+                Заказать букет
+              </a>
+            </Button>
           </div>
         </div>
       </header>
@@ -239,9 +199,11 @@ export default function Index() {
                         <p className="text-2xl font-bold text-primary"></p>
                       </CardContent>
                       <CardFooter>
-                        <Button className="w-full" onClick={() => addToCart(bouquet)}>
-                          <Icon name="ShoppingCart" size={18} className="mr-2" />
-                          В корзину
+                        <Button asChild className="w-full">
+                          <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
+                            <Icon name="Send" size={18} className="mr-2" />
+                            Заказать
+                          </a>
                         </Button>
                       </CardFooter>
                     </Card>
@@ -296,9 +258,11 @@ export default function Index() {
                         ))}
                         <div className="flex justify-between items-center pt-4">
                           <div className="text-2xl font-bold">Итого: <span className="text-primary">{customBouquetTotal}₽</span></div>
-                          <Button size="lg" onClick={addCustomToCart} className="gap-2">
-                            <Icon name="ShoppingCart" size={20} />
-                            Добавить в корзину
+                          <Button asChild size="lg" className="gap-2">
+                            <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
+                              <Icon name="Send" size={20} />
+                              Заказать букет
+                            </a>
                           </Button>
                         </div>
                       </div>
