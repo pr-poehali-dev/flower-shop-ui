@@ -225,7 +225,7 @@ export default function Index() {
                         <div className="text-center">
                           <div className="text-5xl mb-2">{flower.emoji}</div>
                           <h5 className="font-semibold mb-1">{flower.name}</h5>
-                          <p className="text-primary font-bold">{flower.price}₽</p>
+                          <p className="text-primary font-bold">150</p>
                         </div>
                       </Card>
                     ))}
