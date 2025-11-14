@@ -15,6 +15,19 @@ interface Bouquet {
   description: string;
 }
 
+interface Flower {
+  id: number;
+  name: string;
+  price: number;
+  emoji: string;
+  color: string;
+}
+
+interface CustomBouquetItem {
+  flower: Flower;
+  quantity: number;
+}
+
 const bouquets: Bouquet[] = [
   { id: 1, name: 'Розовая нежность', price: 3500, occasion: 'Романтика', image: 'https://cdn.poehali.dev/projects/721cce8c-8358-4211-a869-95b97b5f409f/files/a7c744b0-9dd7-4a3f-a59c-2f006ce07c8e.jpg', description: 'Букет из роз и эвкалипта' },
   { id: 2, name: 'Весенний сад', price: 4200, occasion: 'День рождения', image: 'https://cdn.poehali.dev/projects/721cce8c-8358-4211-a869-95b97b5f409f/files/74112c55-211b-4fad-8e72-8272632fc49d.jpg', description: 'Пионы и тюльпаны' },
@@ -24,11 +37,24 @@ const bouquets: Bouquet[] = [
   { id: 6, name: 'Королевский букет', price: 6500, occasion: 'Свадьба', image: 'https://cdn.poehali.dev/projects/721cce8c-8358-4211-a869-95b97b5f409f/files/239a558d-6168-4da4-a76d-3d7d4f96fa90.jpg', description: 'Премиальная композиция' },
 ];
 
+const flowers: Flower[] = [
+  { id: 1, name: 'Роза', price: 150, emoji: '🌹', color: 'pink' },
+  { id: 2, name: 'Тюльпан', price: 100, emoji: '🌷', color: 'pink' },
+  { id: 3, name: 'Пион', price: 200, emoji: '💮', color: 'pink' },
+  { id: 4, name: 'Лилия', price: 180, emoji: '🌺', color: 'pink' },
+  { id: 5, name: 'Хризантема', price: 120, emoji: '🌼', color: 'yellow' },
+  { id: 6, name: 'Гербера', price: 130, emoji: '🌻', color: 'orange' },
+  { id: 7, name: 'Эвкалипт', price: 80, emoji: '🌿', color: 'green' },
+  { id: 8, name: 'Гипсофила', price: 90, emoji: '✨', color: 'white' },
+];
+
 export default function Index() {
   const [selectedOccasion, setSelectedOccasion] = useState<string>('Все');
   const [priceRange, setPriceRange] = useState<string>('Все');
   const [cart, setCart] = useState<Bouquet[]>([]);
   const [activeSection, setActiveSection] = useState('main');
+  const [customBouquet, setCustomBouquet] = useState<CustomBouquetItem[]>([]);
+  const [showCustomBuilder, setShowCustomBuilder] = useState(false);
 
   const occasions = ['Все', 'Романтика', 'День рождения', 'Свадьба'];
   const priceRanges = ['Все', 'До 4000₽', '4000-5000₽', 'От 5000₽'];
@@ -54,6 +80,46 @@ export default function Index() {
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
+  const addFlowerToCustom = (flower: Flower) => {
+    const existing = customBouquet.find(item => item.flower.id === flower.id);
+    if (existing) {
+      setCustomBouquet(customBouquet.map(item => 
+        item.flower.id === flower.id ? { ...item, quantity: item.quantity + 1 } : item
+      ));
+    } else {
+      setCustomBouquet([...customBouquet, { flower, quantity: 1 }]);
+    }
+  };
+
+  const removeFlowerFromCustom = (flowerId: number) => {
+    const existing = customBouquet.find(item => item.flower.id === flowerId);
+    if (existing && existing.quantity > 1) {
+      setCustomBouquet(customBouquet.map(item => 
+        item.flower.id === flowerId ? { ...item, quantity: item.quantity - 1 } : item
+      ));
+    } else {
+      setCustomBouquet(customBouquet.filter(item => item.flower.id !== flowerId));
+    }
+  };
+
+  const customBouquetTotal = customBouquet.reduce((sum, item) => sum + (item.flower.price * item.quantity), 0);
+
+  const addCustomToCart = () => {
+    if (customBouquet.length > 0) {
+      const customBouquetItem: Bouquet = {
+        id: Date.now(),
+        name: 'Собственный букет',
+        price: customBouquetTotal,
+        occasion: 'Индивидуальный',
+        image: 'https://cdn.poehali.dev/projects/721cce8c-8358-4211-a869-95b97b5f409f/files/a7c744b0-9dd7-4a3f-a59c-2f006ce07c8e.jpg',
+        description: customBouquet.map(item => `${item.flower.name} x${item.quantity}`).join(', ')
+      };
+      setCart([...cart, customBouquetItem]);
+      setCustomBouquet([]);
+      setShowCustomBuilder(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
@@ -64,6 +130,7 @@ export default function Index() {
             <nav className="hidden md:flex gap-6">
               <button onClick={() => setActiveSection('main')} className="hover:text-primary transition-colors">Главная</button>
               <button onClick={() => setActiveSection('catalog')} className="hover:text-primary transition-colors">Каталог</button>
+              <button onClick={() => { setActiveSection('catalog'); setShowCustomBuilder(true); }} className="hover:text-primary transition-colors font-semibold">Собрать букет</button>
               <button onClick={() => setActiveSection('delivery')} className="hover:text-primary transition-colors">Доставка</button>
               <button onClick={() => setActiveSection('about')} className="hover:text-primary transition-colors">О нас</button>
               <button onClick={() => setActiveSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
@@ -137,63 +204,135 @@ export default function Index() {
       {(activeSection === 'main' || activeSection === 'catalog') && (
         <section className="py-16 bg-white" id="catalog">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">Наш каталог</h3>
+            <div className="flex justify-between items-center mb-12">
+              <h3 className="text-3xl font-bold">Наш каталог</h3>
+              <Button 
+                size="lg" 
+                onClick={() => setShowCustomBuilder(!showCustomBuilder)}
+                className="gap-2"
+              >
+                <Icon name="Sparkles" size={20} />
+                {showCustomBuilder ? 'Готовые букеты' : 'Собрать свой букет'}
+              </Button>
+            </div>
             
-            <div className="flex flex-wrap gap-4 justify-center mb-12">
-              <div className="flex flex-wrap gap-2">
-                {occasions.map(occasion => (
-                  <Button
-                    key={occasion}
-                    variant={selectedOccasion === occasion ? 'default' : 'outline'}
-                    onClick={() => setSelectedOccasion(occasion)}
-                    className="rounded-full"
-                  >
-                    {occasion}
-                  </Button>
-                ))}
-              </div>
-              
-              <Separator orientation="vertical" className="h-10 hidden md:block" />
-              
-              <div className="flex flex-wrap gap-2">
-                {priceRanges.map(range => (
-                  <Button
-                    key={range}
-                    variant={priceRange === range ? 'default' : 'outline'}
-                    onClick={() => setPriceRange(range)}
-                    className="rounded-full"
-                  >
-                    {range}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredBouquets.map((bouquet, index) => (
-                <Card key={bouquet.id} className="overflow-hidden group hover:shadow-xl transition-all duration-300 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="relative overflow-hidden aspect-square">
-                    <img 
-                      src={bouquet.image} 
-                      alt={bouquet.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <Badge className="absolute top-4 right-4">{bouquet.occasion}</Badge>
+            {!showCustomBuilder ? (
+              <>
+                <div className="flex flex-wrap gap-4 justify-center mb-12">
+                  <div className="flex flex-wrap gap-2">
+                    {occasions.map(occasion => (
+                      <Button
+                        key={occasion}
+                        variant={selectedOccasion === occasion ? 'default' : 'outline'}
+                        onClick={() => setSelectedOccasion(occasion)}
+                        className="rounded-full"
+                      >
+                        {occasion}
+                      </Button>
+                    ))}
                   </div>
-                  <CardContent className="pt-6">
-                    <h4 className="font-semibold text-xl mb-2">{bouquet.name}</h4>
-                    <p className="text-muted-foreground text-sm mb-4">{bouquet.description}</p>
-                    <p className="text-2xl font-bold text-primary">{bouquet.price}₽</p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full" onClick={() => addToCart(bouquet)}>
-                      <Icon name="ShoppingCart" size={18} className="mr-2" />
-                      В корзину
-                    </Button>
-                  </CardFooter>
+                  
+                  <Separator orientation="vertical" className="h-10 hidden md:block" />
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {priceRanges.map(range => (
+                      <Button
+                        key={range}
+                        variant={priceRange === range ? 'default' : 'outline'}
+                        onClick={() => setPriceRange(range)}
+                        className="rounded-full"
+                      >
+                        {range}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredBouquets.map((bouquet, index) => (
+                    <Card key={bouquet.id} className="overflow-hidden group hover:shadow-xl transition-all duration-300 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                      <div className="relative overflow-hidden aspect-square">
+                        <img 
+                          src={bouquet.image} 
+                          alt={bouquet.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <Badge className="absolute top-4 right-4">{bouquet.occasion}</Badge>
+                      </div>
+                      <CardContent className="pt-6">
+                        <h4 className="font-semibold text-xl mb-2">{bouquet.name}</h4>
+                        <p className="text-muted-foreground text-sm mb-4">{bouquet.description}</p>
+                        <p className="text-2xl font-bold text-primary">{bouquet.price}₽</p>
+                      </CardContent>
+                      <CardFooter>
+                        <Button className="w-full" onClick={() => addToCart(bouquet)}>
+                          <Icon name="ShoppingCart" size={18} className="mr-2" />
+                          В корзину
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="max-w-6xl mx-auto">
+                <Card className="p-6 mb-8">
+                  <h4 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+                    <Icon name="Sparkles" size={28} className="text-primary" />
+                    Соберите свой уникальный букет
+                  </h4>
+                  <p className="text-muted-foreground mb-6">Выберите цветы и создайте композицию по своему вкусу</p>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    {flowers.map(flower => (
+                      <Card key={flower.id} className="p-4 hover:shadow-lg transition-all cursor-pointer" onClick={() => addFlowerToCustom(flower)}>
+                        <div className="text-center">
+                          <div className="text-5xl mb-2">{flower.emoji}</div>
+                          <h5 className="font-semibold mb-1">{flower.name}</h5>
+                          <p className="text-primary font-bold">{flower.price}₽</p>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+
+                  {customBouquet.length > 0 && (
+                    <>
+                      <Separator className="mb-6" />
+                      <div className="space-y-4">
+                        <h5 className="font-semibold text-xl">Ваш букет:</h5>
+                        {customBouquet.map(item => (
+                          <div key={item.flower.id} className="flex items-center justify-between p-4 bg-secondary/30 rounded-lg">
+                            <div className="flex items-center gap-4">
+                              <span className="text-3xl">{item.flower.emoji}</span>
+                              <div>
+                                <p className="font-medium">{item.flower.name}</p>
+                                <p className="text-sm text-muted-foreground">{item.flower.price}₽ × {item.quantity}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button variant="outline" size="icon" onClick={() => removeFlowerFromCustom(item.flower.id)}>
+                                <Icon name="Minus" size={16} />
+                              </Button>
+                              <span className="font-semibold w-8 text-center">{item.quantity}</span>
+                              <Button variant="outline" size="icon" onClick={() => addFlowerToCustom(item.flower)}>
+                                <Icon name="Plus" size={16} />
+                              </Button>
+                            </div>
+                          </div>
+                        ))}
+                        <div className="flex justify-between items-center pt-4">
+                          <div className="text-2xl font-bold">Итого: <span className="text-primary">{customBouquetTotal}₽</span></div>
+                          <Button size="lg" onClick={addCustomToCart} className="gap-2">
+                            <Icon name="ShoppingCart" size={20} />
+                            Добавить в корзину
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </Card>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       )}
