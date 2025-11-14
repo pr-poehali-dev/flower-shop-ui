@@ -223,7 +223,7 @@ export default function Index() {
               <h4 className="font-semibold text-xl">Стоимость доставки:</h4>
               <p>• По Севастополю 300р</p>
               <p>• В Балаклаву 400р</p>
-              <p>• За МКАД — 500₽ + 30₽/км</p>
+              <p>• В Инкерман 500р</p>
             </div>
           </div>
         </section>
