@@ -236,7 +236,7 @@ export default function Index() {
                       <CardContent className="pt-6">
                         <h4 className="font-semibold text-xl mb-2">{bouquet.name}</h4>
                         <p className="text-muted-foreground text-sm mb-4">{bouquet.description}</p>
-                        <p className="text-2xl font-bold text-primary">1500</p>
+                        <p className="text-2xl font-bold text-primary"></p>
                       </CardContent>
                       <CardFooter>
                         <Button className="w-full" onClick={() => addToCart(bouquet)}>
