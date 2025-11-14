@@ -205,7 +205,7 @@ export default function Index() {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-6">
                 <div className="text-4xl mb-4">🚚</div>
-                <h4 className="font-semibold mb-2">Быстрая доставка</h4>
+                <h4 className="font-semibold mb-2">доставка по Севастополю</h4>
                 <p className="text-muted-foreground">По Москве за 2 часа</p>
               </Card>
               <Card className="text-center p-6">
