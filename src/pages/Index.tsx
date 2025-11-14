@@ -245,7 +245,7 @@ export default function Index() {
                   <p className="text-muted-foreground">года на рынке</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">5000+</div>
+                  <div className="text-4xl font-bold text-primary mb-2">500+</div>
                   <p className="text-muted-foreground">довольных клиентов</p>
                 </div>
                 <div className="text-center">
