@@ -59,9 +59,7 @@ export default function Index() {
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-primary flex items-center gap-2">
-              <span className="text-3xl">🌸</span> FleurBoutique
-            </h1>
+            <h1 className="text-2xl font-bold text-primary flex items-center gap-2">Цветочная поляна🌷🌸🌺</h1>
             
             <nav className="hidden md:flex gap-6">
               <button onClick={() => setActiveSection('main')} className="hover:text-primary transition-colors">Главная</button>
