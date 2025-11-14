@@ -123,9 +123,7 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-accent opacity-60" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-                Свежие букеты с доставкой
-              </h2>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">Свежие букеты с доставкой по лучшей цене в Севастополе</h2>
               <p className="text-xl text-muted-foreground mb-8">Создаём настроение каждый день. Доставка по Севастополю</p>
               <Button size="lg" className="text-lg px-8" onClick={() => setActiveSection('catalog')}>
                 Выбрать букет
