@@ -219,36 +219,6 @@ export default function Index() {
             
             {!showCustomBuilder ? (
               <>
-                <div className="flex flex-wrap gap-4 justify-center mb-12">
-                  <div className="flex flex-wrap gap-2">
-                    {occasions.map(occasion => (
-                      <Button
-                        key={occasion}
-                        variant={selectedOccasion === occasion ? 'default' : 'outline'}
-                        onClick={() => setSelectedOccasion(occasion)}
-                        className="rounded-full"
-                      >
-                        {occasion}
-                      </Button>
-                    ))}
-                  </div>
-                  
-                  <Separator orientation="vertical" className="h-10 hidden md:block" />
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {priceRanges.map(range => (
-                      <Button
-                        key={range}
-                        variant={priceRange === range ? 'default' : 'outline'}
-                        onClick={() => setPriceRange(range)}
-                        className="rounded-full"
-                      >
-                        {range}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredBouquets.map((bouquet, index) => (
                     <Card key={bouquet.id} className="overflow-hidden group hover:shadow-xl transition-all duration-300 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
