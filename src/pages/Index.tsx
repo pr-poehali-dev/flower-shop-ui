@@ -304,9 +304,6 @@ export default function Index() {
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground"></p>
           <div className="flex justify-center gap-4 mt-4">
-            <Icon name="Instagram" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-            <Icon name="Facebook" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-            <Icon name="MessageCircle" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
             <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
               <Icon name="Send" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
             </a>
