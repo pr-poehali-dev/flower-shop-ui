@@ -307,6 +307,9 @@ export default function Index() {
             <Icon name="Instagram" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
             <Icon name="Facebook" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
             <Icon name="MessageCircle" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+            <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
+              <Icon name="Send" size={24} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+            </a>
           </div>
         </div>
       </footer>
