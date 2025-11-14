@@ -242,7 +242,7 @@ export default function Index() {
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary mb-2">3+</div>
-                  <p className="text-muted-foreground">лет на рынке</p>
+                  <p className="text-muted-foreground">года на рынке</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary mb-2">5000+</div>
