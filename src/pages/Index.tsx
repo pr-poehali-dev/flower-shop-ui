@@ -206,7 +206,7 @@ export default function Index() {
               <Card className="text-center p-6">
                 <div className="text-4xl mb-4">🚚</div>
                 <h4 className="font-semibold mb-2">доставка по Севастополю</h4>
-                <p className="text-muted-foreground">По Москве за 2 часа</p>
+                <p className="text-muted-foreground"></p>
               </Card>
               <Card className="text-center p-6">
                 <div className="text-4xl mb-4">📅</div>
