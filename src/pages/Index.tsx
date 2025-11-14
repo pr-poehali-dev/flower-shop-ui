@@ -38,12 +38,12 @@ const bouquets: Bouquet[] = [
 ];
 
 const flowers: Flower[] = [
-  { id: 1, name: 'Роза', price: 150, emoji: '🌹', color: 'pink' },
-  { id: 2, name: 'Тюльпан', price: 100, emoji: '🌷', color: 'pink' },
-  { id: 3, name: 'Пион', price: 200, emoji: '💮', color: 'pink' },
-  { id: 4, name: 'Лилия', price: 180, emoji: '🌺', color: 'pink' },
-  { id: 5, name: 'Хризантема', price: 120, emoji: '🌼', color: 'yellow' },
-  { id: 6, name: 'Гербера', price: 130, emoji: '🌻', color: 'orange' },
+  { id: 1, name: 'Роза белая', price: 100, emoji: '🤍', color: 'white' },
+  { id: 2, name: 'Роза желтая', price: 100, emoji: '💛', color: 'yellow' },
+  { id: 3, name: 'Роза малиновая', price: 100, emoji: '🌹', color: 'pink' },
+  { id: 4, name: 'Роза оранжевая', price: 100, emoji: '🧡', color: 'orange' },
+  { id: 5, name: 'Хризантема кустовая', price: 200, emoji: '🌼', color: 'yellow' },
+  { id: 6, name: 'Хризантема одноголовая', price: 150, emoji: '🌻', color: 'yellow' },
   { id: 7, name: 'Эвкалипт', price: 80, emoji: '🌿', color: 'green' },
   { id: 8, name: 'Гипсофила', price: 90, emoji: '✨', color: 'white' },
 ];
