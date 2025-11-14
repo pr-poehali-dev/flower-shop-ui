@@ -268,7 +268,7 @@ export default function Index() {
                   <Icon name="Phone" size={24} />
                   Телефон
                 </h4>
-                <p className="text-lg mb-2">+7 (495) 123-45-67</p>
+                <p className="text-lg mb-2">+7 (978) 860-45-91</p>
                 <p className="text-muted-foreground">Ежедневно с 9:00 до 21:00</p>
               </Card>
               
