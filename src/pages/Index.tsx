@@ -139,9 +139,9 @@ export default function Index() {
               <button onClick={() => setActiveSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
             </nav>
 
-            <Button asChild size="lg" className="gap-2">
+            <Button asChild size="sm" className="gap-1 text-xs">
               <a href="https://t.me/fflowers3" target="_blank" rel="noopener noreferrer">
-                <Icon name="Send" size={20} />
+                <Icon name="Send" size={16} />
                 Заказать букет
               </a>
             </Button>
